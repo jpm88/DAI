@@ -1,0 +1,115 @@
+$def with (datos,tipo)
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="./static/style.css" />
+<title>Practica DAI</title>
+
+
+ <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Meses');
+        data.addColumn('number', 'Ganancias');
+        data.addRows([
+          ['Enero', $datos[0]],
+          ['Febrero', $datos[1]],
+          ['Marzo', $datos[2]],
+          ['Abril', $datos[3]],
+          ['Mayo', $datos[4]],
+	  ['Junio', $datos[5]],
+	  ['Julio', $datos[6]],
+	  ['Agosto', $datos[7]],
+	  ['Septiembre', $datos[8]],
+	  ['Octubre', $datos[9]],
+	  ['Noviembre', $datos[10]],
+	  ['Diciembre', $datos[11]]
+        ]);
+
+        // Set chart options
+        var options = {'title':'Datos financieros',
+                       'width':500,
+                       'height':400};
+
+        // Instantiate and draw our chart, passing in some options.
+	% if tipo:
+	  var chart = new google.visualization.${tipo}(document.getElementById('chart_div'));
+	% endif
+        
+        chart.draw(data, options);
+      }
+    </script>
+
+
+</head>
+
+<body>
+<div id="container">
+		<div id="header">
+        	<h1>Practica 3 DAI</h1>  
+			   
+        </div>   
+        
+        <div id="menu">
+        	<ul>
+            	<li class="menuitem"><a href="/">Home</a></li>
+                <li class="menuitem"><a href="#">About</a></li>
+                <li class="menuitem"><a href="#">Products</a></li>
+                <li class="menuitem"><a href="#">Services</a></li>
+                <li class="menuitem"><a href="#">Design</a></li>
+              
+            </ul>
+        </div>
+        
+        <div id="leftmenu">
+
+        <div id="leftmenu_top"></div>
+
+				<div id="leftmenu_main">    
+                
+                <h3>Links</h3>
+                        
+                <ul>
+                    <li><a href="/formulario">Nuevo usuario</a></li>
+                    
+                </ul>
+</div>
+                
+                
+              <div id="leftmenu_bottom"></div>
+        </div>
+        
+        
+        
+        
+		<div id="content">
+        
+        
+        <div id="content_top"></div>
+	<div id="content_main">
+        	<h2>TITULO. </h2>
+        	<div id="chart_div" style="width: 400px; height:400px;"></div>
+	</div>
+        <div id="content_bottom"></div>
+            
+            <div id="footer"><h3>Pie de pagina</h3></div>
+      </div>
+   </div>
+</body>
+</html>
